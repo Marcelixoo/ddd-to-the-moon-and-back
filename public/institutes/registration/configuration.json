@@ -1,0 +1,36 @@
+{
+    "configuration": {
+
+        "maintenance": false,
+
+        "users": [
+            {
+                "id": "AUTH",
+                "class": "\\Atlas\\DDD\\Authentication\\AuthenticatedUser"
+            }
+        ],
+
+        "user": "AUTH",
+
+        "DEVELOPERS_EMAIL": "atlas-fence-developers@cern.ch",
+
+        "constants": {
+
+            "EXPERIMENT": "Domain-Driven Design",
+
+            "CURRENT_FOLDER": "{{BASE_FOLDER}}/public",
+            "CURRENT_PATH": "{{BASE_PATH}}/public",
+
+            "INTERFACE_TITLE": "DDD to the moon and back",
+
+            "HOME": "{{CURRENT_FOLDER}}",
+            "SYSTEM_FOLDER": "{{CURRENT_FOLDER}}"
+        },
+
+        "interfaces": [
+        ],
+
+        "libraries": {
+        }
+    }
+}

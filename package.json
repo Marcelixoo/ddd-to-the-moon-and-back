@@ -1,0 +1,62 @@
+{
+    "name": "@fence/ddd-to-the-moon-and-back",
+    "version": "1.0.0",
+    "description": "Sample application for the presentation DDD to the moon and back",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch": "npm-watch",
+        "php:test": "SILENT=true vendor/bin/phpunit --color",
+        "php:test:verbose": "SILENT=true vendor/bin/phpunit --testdox",
+        "php:tdd": "watch 'npm run php:test'",
+        "webpack:dev": "webpack --config webpack.config.dev.js",
+        "build:js:dev": "npm run webpack:dev",
+        "compile:dev": "npm run build:js:dev",
+        "setup-fence-assets": "cp -rf ./vendor/glance-project/fence/scripts ./public/fence/scripts && cp -rf ./vendor/glance-project/fence/stylesheets ./public/fence/stylesheets",
+        "build:dev": "npm run setup-fence-assets && npm run compile:dev"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.cern.ch/fence/atlas.git"
+    },
+    "author": "atglance@cern.ch",
+    "license": "GPL-3.0-or-later",
+    "devDependencies": {
+        "@babel/cli": "^7.12.10",
+        "@babel/core": "^7.12.10",
+        "@babel/preset-env": "^7.12.11",
+        "babel-loader": "^8.2.2",
+        "bootstrap": "^4.5.3",
+        "csso-cli": "^2.0.2",
+        "node-sass": "^4.14.1",
+        "npm-watch": "^0.7.0",
+        "popper.js": "^1.16.1",
+        "sass-lint": "^1.13.1",
+        "select2": "4.0.0",
+        "watch": "^1.0.2",
+        "webpack": "^4.46.0",
+        "webpack-cli": "^3.3.12",
+        "webpack-concat-plugin": "^3.0.0"
+    },
+    "dependencies": {
+        "clndr": "^1.5.1",
+        "d3-extended": "^2.0.0",
+        "d3-tip": "^0.7.1",
+        "datamaps": "^0.5.9",
+        "jquery": "^3.5.1",
+        "moment": "^2.29.1",
+        "papaparse": "^4.3.7",
+        "sass": "^1.32.4",
+        "underscore": "^1.12.0"
+    },
+    "watch": {
+        "build:js:dev": [
+            "../fence/source/scripts/modules/*.js"
+        ]
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ],
+        "sourceType": "script"
+    }
+}

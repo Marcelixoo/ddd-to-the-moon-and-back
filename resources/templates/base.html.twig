@@ -1,0 +1,88 @@
+<div class="page-wrapper chiller-theme toggled">
+
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <a href="/"><span>Home</span></a>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-users" aria-hidden="true"></i>
+              <span>Membership</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="/institutes/registration/">Register new institution</a>
+                </li>
+                <li>
+                  <a href="#">Dashboard 2</a>
+                </li>
+                <li>
+                  <a href="#">Dashboard 3</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+              <span>Qualification Task</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">Products
+
+                  </a>
+                </li>
+                <li>
+                  <a href="#">Orders</a>
+                </li>
+                <li>
+                  <a href="#">Credit cart</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button type="button" id="show-sidebar" class="btn btn-secondary">
+                <i id="show-sidebar-icon" class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+    </nav>
+
+    {% block main %}
+      <div class="container-fluid">
+        <h2>Domain-Driven Design: to the moon and back</h2>
+        <hr>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <p>This is a demo application that's part of the presentation "Domain-Driven Design: to the moon and back".</p>
+            <p>
+              The goal of this demo is to demonstrate a few concepts from Domain-Driven Design that might help the Glance team
+              in developing better web applications.
+            </p>
+            <p>
+              You can find the source code on <a href="https://gitlab.cern.ch/fence/.atlas/ddd-to-the-moon-and-back" target="_blank">GitLab</a>.
+            </p>
+          </div>
+          <div class="form-group col-md-12">
+            <iframe src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=star&count=true&size=small" frameborder="0" scrolling="0" width="90px" height="30px"></iframe>
+          </div>
+        </div>
+      </div>
+    {% endblock %}
+
+  </main>
+  <!-- page-content" -->
+</div>

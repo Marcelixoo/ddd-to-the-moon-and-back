@@ -1,0 +1,39 @@
+version: '3'
+services:
+  app:
+    container_name: app-container
+    build:
+      context: .
+      dockerfile: 'docker/php/Dockerfile'
+    ports:
+      - 8000:80
+    env_file:
+      - .env
+    volumes:
+      - ./:/srv/app
+    networks:
+      - app-network
+
+  redis:
+    image: redis:4.0
+    container_name: app-redis
+    ports:
+      - "6382:6379"
+    networks:
+      - app-network
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    container_name: app-mailcatcher
+    ports:
+      - "1025:1025"
+      - "8010:1080"
+    networks:
+      - app-network
+
+volumes:
+  node_modules:
+  vendor:
+networks:
+  app-network:
+    driver: "bridge"

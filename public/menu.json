@@ -1,0 +1,315 @@
+{
+    "menu": {
+
+        "label": "Welcome to the ATLAS Glance Interfaces",
+
+        "sections": [
+            {
+                "icon": "users",
+                "head-title": "Collaboration",
+                "options": [
+                    {
+                        "collapse-title": "Membership",
+                        "collapse-id": "Membership",
+                        "href": "{{MEMBERSHIP_FOLDER}}",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The ATLAS Membership was developed to manage the data stored into the Membership database related to members, institutes and author qualification. This information is used to produce authorlists for ATLAS papers, the ATLAS directory and the yearly breakdown of M-and-O and operations tasks quotas. The database supports the work of the Authorship Committee, who are responsible for implementation of policies and the correctness of the information stored."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Appointment",
+                        "collapse-id": "Appointment",
+                        "href": "{{APPOINTMENT_FOLDER}}",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The system was created to manage information about the appointments of the ATLAS collaboration, and its information is used to give privileges and access to many other systems developed by the ATLAS Technical Coordination."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Collaboration Board Meetings",
+                        "collapse-id": "cbm",
+                        "href": "{{ATLAS_FOLDER}}/cbm",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "A place where Institute Representatives can assign their Institute's vote in the ATLAS Collaboration Board Meetings to either someone in their institute or to a proxy institute."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Author lists",
+                        "collapse-id": "authorlists",
+                        "href": "{{ATLAS_FOLDER}}/membership/authorlists/",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The ATLAS authorship database is used to produce author lists for ATLAS papers, the ATLAS directory and the yearly breakdown of M-and-O and operations tasks quotas."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Idea Box",
+                        "collapse-id": "ideabox",
+                        "href": "{{ATLAS_FOLDER}}/ideabox",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The Idea Box is a space where ATLAS members can submit comments or suggestions to ATLAS collaboration groups."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "icon": "file-text-o",
+                "head-title": "Publications",
+                "options": [
+                    {
+                        "collapse-title": "Analysis - Phase 0",
+                        "collapse-id": "analyses",
+                        "href": "{{ANALYSIS_FOLDER}}/analyses",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The ATLAS Analysis - Phase 0 System supports the process of revision, approval and publication of Analysis. The major users of the system are the ATLAS Publication Committee members and chairs, the ATLAS Physics Coordinators and Groups Conveners or Activity Coordinators, including Detector and Upgrade. Among the functionalities presented in the system are: search for analysis records, definition of an Editorial Board and Reviewers for each analysis, sending advise e-mails about presentations, revision periods, and sign-offs, while keeping track of documents and reviews stored in CDS."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Analysis - Papers",
+                        "collapse-id": "papers",
+                        "href": "{{ANALYSIS_FOLDER}}/papers",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The ATLAS Analysis - Papers System supports the process of revision, approval and publication of papers and analysis. The major users of the system are the ATLAS Publication Committee members and chairs, the ATLAS Physics Coordinators and Groups Conveners or Activity Coordinators, including Detector and Upgrade. Among the functionalities presented in the system are: search for analysis records, definition of an Editorial Board and Reviewers for each analysis, sending advise e-mails about presentations, revision periods, and sign-offs, while keeping track of documents and reviews stored in CDS."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Analysis - CONF Notes",
+                        "collapse-id": "confnotes",
+                        "href": "{{ANALYSIS_FOLDER}}/confnotes",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The ATLAS Analysis - Conference Notes System supports the approval process of CONF notes. The major users of the system are the ATLAS Physics Coordinators, Groups Conveners or Activity Coordinators, and ATLAS Publication Committee members and chairs. Among the functionalities presented in the system are: search for CONF note records, definition of an Editorial Board for each CONF note, sending advise e-mails about presentations, revision periods, and sign-offs, while keeping track of documents and reviews stored in CDS."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Analysis - PUB Notes",
+                        "collapse-id": "pubnotes",
+                        "href": "{{ANALYSIS_FOLDER}}/pubnotes",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The ATLAS Analysis - Pub Notes System supports the approval process of PUB notes. The major users of the system are the ATLAS Physics Coordinators and Groups Conveners or Activity Coordinators, including Detector and Upgrade , and ATLAS Publication Committee members and chairs. Among the functionalities presented in the system are: search for Pub note records, definition of a a review team (Readers) for each PUB note, sending emails about sign-offs, etc. and keeping track of documents and reviews stored in CDS."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Analysis - PLOTs",
+                        "collapse-id": "plots",
+                        "href": "{{ANALYSIS_FOLDER}}/plots",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The ATLAS Analysis - PLOTs System supports the approval process of PLOTs. The major users of the system are the Groups Conveners or Activity Coordinators, including Detector and Upgrade."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Thesis",
+                        "collapse-id": "thesis",
+                        "href": "{{MEMBERSHIP_FOLDER}}/fast_queries/theses",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "Cointains information about the theses published by ATLAS Members. From this website you can easily reach the link to the thesis in CDS or the author's profile in Membership. You can also check the type and status of each thesis and its institute and country."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "icon": "bullhorn",
+                "head-title": "Speakers",
+                "options": [
+                    {
+                        "collapse-title": "SCAB",
+                        "collapse-id": "scab",
+                        "href": "{{SPEAKERS_FOLDER}}/scab",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The system has been developed with the purpose of manage the information about the speakers nominations by the collaboration. Search interfaces to access the database, creation of new nominations, and statistical histograms are among the functionalities offered by the system."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Speakers Committee",
+                        "collapse-id": "speakerscommittee",
+                        "href": "{{SPEAKERS_FOLDER}}",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "Supports the process of selecting talk speakers to represent the ATLAS Collaboration at international conferences."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "TDAQ Speakers",
+                        "collapse-id": "tdaq",
+                        "href": "{{SPEAKERS_FOLDER}}/groups?id=tdaq",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The system has been developed with the purpose of managing the information about the speakers nominations for Trigger and DAQ related talks by the collaboration. Search interfaces to access the database, creation of new nominations, and statistical histograms are among the functionalities offered by the system."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Public Pages",
+                        "collapse-id": "public_speakers",
+                        "options":[
+                            {
+                                "label": "ATLAS Talks",
+                                "target": "_blank",
+                                "href": "{{SPEAKERS_FOLDER}}/publicglance/talksbyconference"
+                            },
+                            {
+                                "label": "ATLAS SC Summary",
+                                "target": "_blank",
+                                "href": "{{SPEAKERS_FOLDER}}/publicglance/summary"
+                            }
+                        ]
+                    }
+
+                ]
+            },
+            {
+                "icon": "columns",
+                "head-title": "Equipment",
+                "options": [
+                    {
+                        "collapse-title": "ACES",
+                        "collapse-id": "aces",
+                        "href": "{{CURRENT_FOLDER}}/aces",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "This system includes functionalities from the following previous systems: RackWizard (Fence), Traceability (Glance), EquipDB (Glance) and Cables (Glance)."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Traceability",
+                        "collapse-id": "traceability",
+                        "href": "https://atglance.web.cern.ch/atglance/atlas_track",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The running of the Large Hadron Collider exposes the ATLAS detector to radiation. Therefore, CERN shall follow specific regulation from French and Swiss authorities for equipment removal, transport, repair, and disposal. During the operation, maintenance, and dismantling periods of the ATLAS Experiment, the traceability of all detector equipment must be guaranteed for logistic and safety matters. The system has been developed to track location, monitor radiation, and store property data of thousands of equipment within the detector facilities."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Glance TDAQ",
+                        "collapse-id": "glancetdaq",
+                        "href": "https://atglance.web.cern.ch/atglance/atlas_tdaq/main.php",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "Glance TDAQ"
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "MTF Database",
+                        "collapse-id": "mtf",
+                        "href": "https://atglance.web.cern.ch/atglance/cgi-bin/listInterfaces?cat=142",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The Manufacturing and Test Folder (MTF) application is an integral part of the Engineering Data Management System (EDMS) at CERN and was developed to capture manufacturing and test data for the LHC project. MTF stores a wide range of data such as information about manufacturer, manufacturing procedures, test results, non-conformities notices and other related documentation. Glance accesses data from MTF trough the use of its own set of search interfaces. "
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Survey",
+                        "collapse-id": "survey",
+                        "href": "https://atglance.web.cern.ch/atglance/cgi-bin/showInterface?SIID=1170",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "A large amount of survey data was accumulated during sub-detectors integration and installation. This survey data is stored into an Oracle database to monitor existing displacements of the sub-detectors objects from their nominal positions with respect to the ATLAS Interaction Point reference system. This information can be searched in a Glance Search Interface, filtering data for a specific detector. "
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "DSS Alarms Viewer",
+                        "collapse-id": "dss",
+                        "href": "https://atglance.web.cern.ch/atglance/dss/",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "The tool has an alarm details viewer, which shows the list of alarms, and displays the details for one alarm under selection at a time: its status, the trigger conditions with the latency, the actions related with the delay, links for more details for each condition and action, and a historic of the alarm (when it was triggered, when its configuration was modified). The interface also provides means of searching by alarm name or system, allowing any user to see the details for a list of alarms. This information can be exported to Excel, CSV and XML formats."
+                            }
+                        ]
+
+                    },
+                    {
+                        "collapse-title" :"EAM Infor",
+                        "collapse-id": "eaminfor",
+                        "href": "https://www.cern.ch/cmms",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "CERN is like most organizations with large installations of equipment using a Computerized Maintenance Management System (CMMS) to streamline, organize and document all our asset tracking and maintenance management efforts. In industry this is today often called Enterprise Asset Management (EAM) indicating that such tools are used to optimize the performance and lifecycle of physical assets across the whole organization. This makes Infor EAM a centralized asset repository for the whole accelerator complex and thus a vital tool for efficient knowledge transfer which is a must for installations with very long lifecycles."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Apex TDAQ",
+                        "collapse-id": "apex",
+                        "href": "https://apex.cern.ch/pls/htmldb_atlas/f?p=124",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "Apex TDAQ"
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Muon Equipment",
+                        "collapse-id": "muone",
+                        "href": "https://apex.cern.ch/pls/htmldb_atlas/f?p=183",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "Muon Equipment Repository is an application containing data about muon devices installed in the ATLAS detector. The application consists of two parts. The first part is dedicated to certification: there are stored data concerning tests during the assembling of chambers. These are cosmics, noise, tomo, tsensor, and gas leak tests. The second part is the parameter book, which describes the muon equipment in two ways: parameters that describe individual devices and global parameters for every group of devices with the same equipment type. Items are hierarchically ordered."
+                            }
+                        ]
+                    },
+                    {
+                        "collapse-title": "Muon Spare",
+                        "collapse-id": "muons",
+                        "href": "https://apex.cern.ch/pls/htmldb_atlas/f?p=167:18",
+                        "target": "_blank",
+                        "options":[
+                            {
+                                "description": "This application manages the repertory of every muon spare equipment as well as all muon equipment which is being repaired for further usage. It allows to monitor the locations where equipment are stored, and they can be grouped by equipment type, equipment responsible, status, or working group. If an equipment type is running out of stock, equipment responsibles receive an automatic warning in order to make a purchase request."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

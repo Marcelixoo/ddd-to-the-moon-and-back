@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit    bootstrap="tests/bootstrap.php"
+            colors="true"
+            convertNoticesToExceptions="false"
+            convertWarningsToExceptions="false">
+    <testsuites>
+        <testsuite name="common">
+            <directory>./tests</directory>
+            <exclude>./tests/Unit/Membership/User</exclude>
+        </testsuite>
+        <testsuite name="validation">
+            <directory>./source/validation/tests</directory>
+        </testsuite>
+        <testsuite name="authorlist">
+            <directory>./membership/authorlists/source/tests</directory>
+        </testsuite>
+        <testsuite name="speakers">
+            <directory>./speakers/tests</directory>
+        </testsuite>
+        <testsuite name="membership">
+            <directory>./membership/tests</directory>
+            <directory>./membership/non-atlas/topic/tests</directory>
+        </testsuite>
+        <testsuite name="analysis">
+            <directory>./analysis/tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <groups>
+        <exclude>
+            <group>deprecated</group>
+        </exclude>
+    </groups>
+
+    <php>
+        <env name="ENVIRONMENT" value="testing" force="true" />
+        <env name="TEST" value="true" />
+        <ini name="display_errors" value="On" />
+        <ini name="display_startup_errors" value="On" />
+    </php>
+</phpunit>

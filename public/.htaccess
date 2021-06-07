@@ -1,0 +1,16 @@
+DirectoryIndex index.php index.html index
+
+RedirectMatch 404 \.env\.*
+RedirectMatch 404 \.htaccess
+RedirectMatch 404 /\.git
+RedirectMatch 404 /log
+
+# Enable Authorization Header
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+# Rewrite rules
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC]

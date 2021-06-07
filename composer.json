@@ -1,0 +1,50 @@
+{
+    "name": "atlas/ddd-to-the-moon-and-back",
+    "description": "A sample application built for the talk \"DDD to the moon and back\"",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Marcelo Teixeira dos Santos",
+            "email": "marcelo.teixeira@cern.ch"
+        }
+    ],
+    "config": {
+        "platform": {
+            "php": "7.3.2"
+        },
+        "preferred-install": "dist",
+        "prepend-autoloader": false,
+        "optimize-autoloader": true
+    },
+    "scripts": {
+        "test": "docker exec -it app-container phpunit --testdox"
+    },
+    "require": {
+        "glance-project/fence": "dev-master",
+        "php-di/php-di": "^6.0",
+        "symfony/routing": "^5.3",
+        "pecee/simple-router": "^4.3",
+        "ramsey/uuid": "^4.1",
+        "predis/predis": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8",
+        "phpstan/phpstan": "^0.12.19"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://gitlab.cern.ch/fence/fence.git"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Atlas\\DDD\\": "source"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "Atlas\\DDD\\Tests\\": "tests"
+        }
+    }
+}
