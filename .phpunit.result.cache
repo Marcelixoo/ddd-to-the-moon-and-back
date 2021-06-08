@@ -1,1 +1,0 @@
-C:37:"PHPUnit\Runner\DefaultTestResultCache":312:{a:2:{s:7:"defects";a:1:{s:119:"Atlas\DDD\Tests\UseCases\RegisterInstitution\InstitutionRegistrationTest::it_saves_a_new_institution_and_returns_its_id";i:4;}s:5:"times";a:1:{s:119:"Atlas\DDD\Tests\UseCases\RegisterInstitution\InstitutionRegistrationTest::it_saves_a_new_institution_and_returns_its_id";d:0.035;}}}
