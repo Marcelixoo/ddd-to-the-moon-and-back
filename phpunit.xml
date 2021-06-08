@@ -34,7 +34,6 @@
 
     <php>
         <env name="ENVIRONMENT" value="testing" force="true" />
-        <env name="TEST" value="true" />
         <ini name="display_errors" value="On" />
         <ini name="display_startup_errors" value="On" />
     </php>

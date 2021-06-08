@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\MembershipManagement\UseCases\RegisterInstitution;
+namespace Atlas\DDD\Membership\Stories\RegisterInstitution;
 
 final class RegisterInstitutionRequest
 {

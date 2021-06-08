@@ -17,7 +17,7 @@
         "optimize-autoloader": true
     },
     "scripts": {
-        "test": "docker exec -it app-container phpunit --testdox"
+        "test": "docker exec -it app-container phpunit"
     },
     "require": {
         "glance-project/fence": "dev-master",
@@ -29,7 +29,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^8",
-        "phpstan/phpstan": "^0.12.19"
+        "phpstan/phpstan": "^0.12.19",
+        "guzzle/guzzle": "^3.9"
     },
     "repositories": [
         {

@@ -23,17 +23,17 @@ require __DIR__ . '/../vendor/autoload.php';
 | Load environment files
 |--------------------------------------------------------------------------
 |
-| Once we have the application, we can handle the incoming request
-| through the kernel, and send the associated response back to
-| the client's browser allowing them to enjoy the creative
-| and wonderful application we have prepared for them.
+| A few sensitive configuration values must be provided to the
+| application. This is done through dotenv files ignored by git.
+| Good examples of sensitive values are database credentials and
+| resource paths.
 |
 */
 
-$path = dirname(__DIR__);
+$rootPath = dirname(__DIR__);
 
-if (file_exists("{$path}/.env")) {
-    new \Fence\Dotenv($path, ".env");
+if (file_exists("{$rootPath}/.env")) {
+    new \Fence\Dotenv($rootPath, ".env");
 }
 
 /*
@@ -41,14 +41,19 @@ if (file_exists("{$path}/.env")) {
 | Builds dependency injection container
 |--------------------------------------------------------------------------
 |
-| Once we have the application, we can handle the incoming request
-| through the kernel, and send the associated response back to
-| the client's browser allowing them to enjoy the creative
-| and wonderful application we have prepared for them.
+| In order to leverage the dependency inversion principle,
+| DI containers provide well-defined mechanism to autoload
+| dependencies and streamline complex dependency chains.
+|
+| The dependencies come from service providers defined by
+| each component of the system.
 |
 */
 $containerBuilder = new DI\ContainerBuilder();
 
 $containerBuilder->addDefinitions(ApplicationServiceProvider::getDefinitions());
 
-return $containerBuilder->build();
+$container = $containerBuilder->build();
+$container->set('root_path', $rootPath);
+
+return $container;

@@ -2,13 +2,12 @@
 
 /*
 |--------------------------------------------------------------------------
-| Run The Application
+| Bootstrap the framework
 |--------------------------------------------------------------------------
 |
-| Once we have the application, we can handle the incoming request
-| through the kernel, and send the associated response back to
-| the client's browser allowing them to enjoy the creative
-| and wonderful application we have prepared for them.
+| Fence provides a king of entrypoint entity that bootstraps the
+| whole application in one go and takes care of loading assets
+| and authenticating the current logged user.
 |
 */
 

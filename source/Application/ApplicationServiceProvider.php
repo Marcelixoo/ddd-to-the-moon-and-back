@@ -18,9 +18,13 @@ final class ApplicationServiceProvider
 
             'user' => SessionManager::getUser(),
 
-            'templates' => dirname(__DIR__) . '/resources/templates',
+            'templates' => function(ContainerInterface $c) {
+                return $c->get('root_path') . '/resources/templates';
+            },
 
-            'views' => dirname(__DIR__) . '/resources/views',
+            'views' => function(ContainerInterface $c) {
+                return $c->get('root_path') . '/resources/views';
+            },
 
             View::class => function (ContainerInterface $c) {
                 return new View($c->get('templates'));

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Atlas\DDD\Application\UserInterface\Institutes;
 
 use Fence\Content;
-use Fence\Logger;
 use Fence\View\View;
 
 final class InstitutesRegistrationPage extends Content

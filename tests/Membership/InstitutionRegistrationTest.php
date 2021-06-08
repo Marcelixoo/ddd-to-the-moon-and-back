@@ -2,22 +2,29 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Tests\UseCases\RegisterInstitution;
+namespace Atlas\DDD\Tests\Membership;
 
-use Atlas\DDD\MembershipManagement\Model\Institution;
-use Atlas\DDD\MembershipManagement\Model\InstitutionNotFoundException;
-use Atlas\DDD\MembershipManagement\Model\InstitutionsRepositoryInterface;
-use Atlas\DDD\MembershipManagement\UseCases\RegisterInstitution\RegisterInstitutionCommand;
-use Atlas\DDD\MembershipManagement\UseCases\RegisterInstitution\RegisterInstitutionRequest;
-use PHPUnit\Framework\TestCase;
+use Atlas\DDD\Membership\Model\Institution;
+use Atlas\DDD\Membership\Model\InstitutionNotFoundException;
+use Atlas\DDD\Membership\Model\InstitutionsRepositoryInterface;
+use Atlas\DDD\Membership\Stories\RegisterInstitution\RegisterInstitutionCommand;
+use Atlas\DDD\Membership\Stories\RegisterInstitution\RegisterInstitutionRequest;
+use Atlas\DDD\Notification\Stories\NotifyInstitutionRegistrationByEmail;
+use Atlas\DDD\Tests\Testing\EmailTestCase;
 use Predis\Client;
 
-final class InstitutionRegistrationTest extends TestCase
+final class InstitutionRegistrationTest extends EmailTestCase
 {
+
+    protected function setUp(): void
+    {
+        $this->container = require 'tests/bootstrap.php';
+        parent::setUp();
+    }
     /** @test */
     public function it_saves_a_new_institution_and_returns_its_id(): void
     {
-        $command = new RegisterInstitutionCommand($institutionsRepository = new InstitutionsRedisRepository());
+        $command = new RegisterInstitutionCommand($institutionsRepository = new InstitutionsRedisRepository(), $this->container->get(NotifyInstitutionRegistrationByEmail::class));
 
         $newId = $command->execute(new RegisterInstitutionRequest(
             "Universidade Federal do Rio de Janeiro",
@@ -28,6 +35,23 @@ final class InstitutionRegistrationTest extends TestCase
         $this->assertEquals("Universidade Federal do Rio de Janeiro", $fromRepository->name());
         $this->assertEquals("Brazil", $fromRepository->country());
     }
+
+    /** @test */
+    public function it_sends_an_email_notifying_the_registration_to_atlas_secretariat(): void
+    {
+        $command = new RegisterInstitutionCommand(new InstitutionsRedisRepository(), $this->container->get(NotifyInstitutionRegistrationByEmail::class));
+
+        $command->execute(new RegisterInstitutionRequest(
+            "Universidade Federal do Rio de Janeiro",
+            "Brazil"
+        ));
+
+        $lastMessage = $this->getLastMessage();
+
+        $this->assertEmailSubjectContains('Institution registration', $lastMessage);
+        $this->assertEmailHtmlContains('Universidade Federal do Rio de Janeiro', $lastMessage);
+    }
+
 }
 
 class InstitutionsInMemoryRepository implements InstitutionsRepositoryInterface
