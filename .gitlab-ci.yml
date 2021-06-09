@@ -5,7 +5,7 @@ workflow:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 variables:
-  PHP_IMAGE: gitlab-registry.cern.ch/fence/atlas/php-7.3.27:0.1.0
+  PHP_IMAGE: $CI_REGISTRY_IMAGE/demo:1.0.0
 
 stages:
   - build
