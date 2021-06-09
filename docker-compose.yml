@@ -13,6 +13,9 @@ services:
       - ./:/srv/app
     networks:
       - app-network
+    environment:
+      - REDIS_HOST=tcp://redis:6379
+      - MAILCATCHER_HOST=http://mailcatcher:1080
 
   redis:
     image: redis:4.0
