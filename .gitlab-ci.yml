@@ -6,11 +6,6 @@ workflow:
 
 variables:
   PHP_IMAGE: gitlab-registry.cern.ch/fence/atlas/php-7.3.27:0.1.0
-  STAGING_RELEASES_PATH: /srv/glance-project/releases
-
-.vendor-check:
-  before_script: &vendor-check
-    - .gitlab/ci/check-vendor.sh
 
 stages:
   - build
@@ -18,7 +13,7 @@ stages:
   - preparation
   - review
 
-build-composer-dependencies:
+build:
   stage: build
   image: $PHP_IMAGE
   cache:
@@ -32,18 +27,12 @@ build-composer-dependencies:
     - composer config -g http-basic.gitlab.cern.ch $GIT_USERNAME $GIT_PASSWORD
     - composer install  --no-interaction --prefer-dist
 
-build-node-dependencies:
-  stage: build
-  image: node:12-slim
-  tags:
-    - docker
-  script:
-    - npm ci
-    - npm ls
-
-run-tests:
+test:
   stage: test
   image: $PHP_IMAGE
+  services:
+    - redis:4.0
+    - schickling/mailcatcher
   tags:
     - docker
   cache:
@@ -51,42 +40,5 @@ run-tests:
     paths:
       - vendor/
     policy: pull
-  before_script: *vendor-check
   script:
-    - composer test
-
-deploy-review-app:
-  stage: review
-  environment:
-    name: review/$CI_COMMIT_REF_NAME
-    url: https://glance-staging.cern.ch/releases/$CI_ENVIRONMENT_SLUG
-    on_stop: stop-review-app
-    auto_stop_in: 1 week
-  variables:
-    GIT_STRATEGY: none
-    NEW_RELEASE_FOLDER: $CI_ENVIRONMENT_SLUG
-  tags:
-    - glance-staging
-    - glance-deploy
-  script:
-    - $STAGING_RELEASES_PATH/bin/create-folders-structure.sh
-    - $STAGING_RELEASES_PATH/bin/build-staging-release.sh
-  rules:
-    - if: $CI_MERGE_REQUEST_ID
-    - if: $CI_COMMIT_REF_NAME =~ /^release-.*/
-    - if: $CI_COMMIT_TAG =~ /^release-.*/
-
-stop-review-app:
-  stage: review
-  environment:
-    name: review/$CI_COMMIT_REF_NAME
-    action: stop
-  variables:
-    GIT_STRATEGY: none
-    TARGET_REVIEW_PATH: "$STAGING_RELEASES_PATH/$CI_ENVIRONMENT_SLUG"
-  tags:
-    - glance-staging
-    - glance-deploy
-  script:
-    - rm -rf $TARGET_REVIEW_PATH
-  when: manual
+    - phpunit --testdox

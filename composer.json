@@ -17,7 +17,6 @@
         "optimize-autoloader": true
     },
     "scripts": {
-        "test": "docker exec -it app-container phpunit"
     },
     "require": {
         "glance-project/fence": "dev-master",
