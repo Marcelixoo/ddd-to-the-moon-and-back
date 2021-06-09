@@ -88,7 +88,7 @@ class InstitutionsRedisRepository implements InstitutionsRepositoryInterface
 
     public function __construct()
     {
-        $this->storage = new Client('tcp://redis:6379');
+        $this->storage = new Client(getenv('REDIS_HOST'));
     }
 
     public function save(Institution $institution): void

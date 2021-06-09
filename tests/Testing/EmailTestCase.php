@@ -15,13 +15,13 @@ class EmailTestCase extends TestCase
 
     protected function setUp(): void
     {
-        $this->mailcatcher = new Client('http://mailcatcher:1080');
+        $this->mailcatcher = new Client(getenv("MAILCATCHER_HOST"));
         $this->cleanMessages();
     }
 
     protected function tearDown(): void
     {
-        // $this->cleanMessages();
+        $this->cleanMessages();
     }
 
     public function cleanMessages()

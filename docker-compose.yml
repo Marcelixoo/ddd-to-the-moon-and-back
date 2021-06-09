@@ -18,7 +18,7 @@ services:
     image: redis:4.0
     container_name: app-redis
     ports:
-      - "6382:6379"
+      - "6379:6379"
     networks:
       - app-network
 
@@ -27,7 +27,7 @@ services:
     container_name: app-mailcatcher
     ports:
       - "1025:1025"
-      - "8010:1080"
+      - "1080:1080"
     networks:
       - app-network
 
