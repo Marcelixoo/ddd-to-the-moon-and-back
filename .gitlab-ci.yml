@@ -31,8 +31,10 @@ test:
   stage: test
   image: $PHP_IMAGE
   services:
-    - redis:4.0
-    - schickling/mailcatcher
+    - name: redis:4.0
+      alias: redis
+    - name: schickling/mailcatcher
+      alias: mailcatcher
   tags:
     - docker
   cache:
