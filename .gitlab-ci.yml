@@ -41,4 +41,4 @@ test:
       - vendor/
     policy: pull
   script:
-    - phpunit --testdox
+    - ./vendor/bin/phpunit --testdox
