@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Atlas\DDD\Secretariat\Model\Member;
 
-use DateTimeImmutable;
-use Atlas\DDD\Secretariat\Model\Member\AffiliationRegime\CanonicalAffiliation;
+use Atlas\DDD\Secretariat\Model\Member\Affiliation\AffiliationInterface;
+use Atlas\DDD\Secretariat\Model\Member\Affiliation\Affiliations;
 
 class Member
 {
@@ -13,13 +13,12 @@ class Member
         string $identifier,
         MemberName $name,
         CernEmail $emailAddress,
-        CanonicalAffiliation $canonicalAffiliation
+        AffiliationInterface $canonicalAffiliation
     ) {
         $this->id = $identifier;
-        $this->canonicalAffiliation = $canonicalAffiliation;
         $this->name = $name;
         $this->emailAddress = $emailAddress;
-        $this->affiliationDate = new DateTimeImmutable("now");
+        $this->affiliations = new Affiliations([$canonicalAffiliation]);
     }
 
     public function id(): string
@@ -28,12 +27,17 @@ class Member
     }
 
     public function emailAddress(): CernEmail
-    {
+{
         return $this->emailAddress;
     }
 
-    public function canonicalAffiliation(): CanonicalAffiliation
+    public function addAffiliation(AffiliationInterface $affiliation): void
     {
-        return $this->canonicalAffiliation;
+        $this->affiliations->add($affiliation);
+    }
+
+    public function affiliations(): array
+    {
+        return $this->affiliations->toArray();
     }
 }

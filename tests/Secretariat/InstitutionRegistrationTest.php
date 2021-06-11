@@ -60,9 +60,9 @@ class InstitutionsInMemoryRepository implements InstitutionsRepositoryInterface
     /** @var array */
     private $storage;
 
-    public function __construct()
+    public function __construct(array $initialStorage = [])
     {
-        $this->storage = [];
+        $this->storage = $initialStorage;
     }
 
     public function save(Institution $institution): void

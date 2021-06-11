@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Atlas\DDD\Tests\Secretariat;
 
-use RuntimeException;
-use Ramsey\Uuid\Uuid;
+use DateTimeImmutable;
+use Atlas\DDD\Application\CurrentDateProvider\CurrentDateProviderInterface;
+use Atlas\DDD\Tests\Testing\EmailTestCase;
+use Atlas\DDD\Application\IdentifierGenerator\UuidGenerator;
 use Atlas\DDD\Secretariat\Features\RegisterMember\MembersRegistrationService;
 use Atlas\DDD\Secretariat\Features\RegisterMember\NewMemberRequest;
+use Atlas\DDD\Secretariat\Model\Member\Affiliation\AffiliationDeadlineService;
+use Atlas\DDD\Secretariat\Model\Member\Capabilities\MemberCapabilitiesService;
 use Atlas\DDD\Secretariat\Model\Member\CernEmail;
-use Atlas\DDD\Secretariat\Model\Member\Member;
-use Atlas\DDD\Secretariat\Model\Member\MembersRepositoryInterface;
-use Atlas\DDD\Tests\Testing\EmailTestCase;
-use Atlas\DDD\Tests\Testing\InMemoryStorage;
+use Atlas\DDD\Secretariat\Repositories\MembersInMemoryRepository;
 
 final class MemberRegistrationTest extends EmailTestCase
 {
@@ -26,13 +27,16 @@ final class MemberRegistrationTest extends EmailTestCase
     /** @test */
     public function a_new_member_is_registered_with_a_unique_cern_email(): void
     {
-        $registrationService = new MembersRegistrationService($repository = new MembersInMemoryRepository());
+        $registrationService = new MembersRegistrationService($repository = new MembersInMemoryRepository(new MemberCapabilitiesService(new AffiliationDeadlineService(new Today()))));
 
         $newMemberId = $registrationService->register(new NewMemberRequest(
-            Uuid::uuid4()->toString(),
             "Marcelo",
             "Teixeira dos Santos",
-            "marcelo.teixeira@cern.ch"
+            "marcelo.teixeira@cern.ch",
+            $this->generateIdentity(),
+            "student",
+            "19-11-2020",
+            "19-11-2022",
         ));
 
         $fromRepository = $repository->get($newMemberId);
@@ -40,45 +44,16 @@ final class MemberRegistrationTest extends EmailTestCase
         $this->assertTrue($fromRepository->emailAddress()->isEqualTo(new CernEmail("marcelo.teixeira@cern.ch")));
     }
 
-    /** @test */
-    public function members_have_a_canonical_affiliation(): void
+    private function generateIdentity(): string
     {
-        $registrationService = new MembersRegistrationService($repository = new MembersInMemoryRepository());
-
-        $newMemberId = $registrationService->register(new NewMemberRequest(
-            $institutionId = Uuid::uuid4()->toString(),
-            "Marcelo",
-            "Teixeira dos Santos",
-            "marcelo.teixeira@cern.ch"
-        ));
-
-        $fromRepository = $repository->get($newMemberId);
-
-        $this->assertEquals($fromRepository->canonicalAffiliation()->institutionId(), $institutionId);
+        return (new UuidGenerator())->generateNewIdentifier();
     }
-
 }
 
-class MembersInMemoryRepository implements MembersRepositoryInterface
+class Today implements CurrentDateProviderInterface
 {
-    use InMemoryStorage;
-
-    public function add(Member $member): void
+    public function currentDate(): DateTimeImmutable
     {
-        $this->set($member->id(), $member);
-    }
-
-    public function nextIdentity(): string
-    {
-        return Uuid::uuid4()->toString();
-    }
-
-    public function checkEmailIsNotYetTaken(CernEmail $email): void
-    {
-        foreach ($this->storage as $member) {
-            if ($member->emailAddress()->isEqualTo($email)) {
-                throw new RuntimeException("Email {$email} has already being taken.");
-            }
-        }
+        return new DateTimeImmutable("2021-06-11");
     }
 }

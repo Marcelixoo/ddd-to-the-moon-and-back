@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Atlas\DDD\Secretariat\Model\Institution;
 
+use Atlas\DDD\Secretariat\Model\Member\Capabilities\ActiveMember;
+use Atlas\DDD\Secretariat\Model\Member\Member;
+use InvalidArgumentException;
 use JsonSerializable;
 
 final class Institution implements JsonSerializable
@@ -16,6 +19,9 @@ final class Institution implements JsonSerializable
 
     /** @var string */
     private $country;
+
+    /** @var string */
+    private $representativeId;
 
     public function __construct(string $institutionId, string $name, string $country)
     {
@@ -37,6 +43,15 @@ final class Institution implements JsonSerializable
     public function country(): string
     {
         return $this->country;
+    }
+
+    public function assignAsRepresentative(ActiveMember $candidate): void
+    {
+        if (! $candidate->isEligibleToRepresentInstitution()) {
+            throw new InvalidArgumentException("Only physicists are eligible to be representatives");
+        }
+
+        $this->representativeId = $candidate->id();
     }
 
     public function jsonSerialize()

@@ -23,7 +23,7 @@ final class MembersRegistrationService
             $this->membersRepository->nextIdentity(),
             $request->name(),
             $request->emailAddress(),
-            $request->canonicalAffiliation()
+            $request->affiliation()
         );
 
         $this->membersRepository->add($newMember);

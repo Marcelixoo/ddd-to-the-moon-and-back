@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Atlas\DDD\Secretariat\Features\RegisterMember;
 
-use Atlas\DDD\Secretariat\Model\Member\AffiliationRegime\CanonicalAffiliation;
 use Atlas\DDD\Secretariat\Model\Member\CernEmail;
 use Atlas\DDD\Secretariat\Model\Member\MemberName;
+use Atlas\DDD\Secretariat\Model\Member\Affiliation\AffiliationType\LongTermAssociation\LongTermAssociation;
 
 final class NewMemberRequest
 {
@@ -14,18 +14,26 @@ final class NewMemberRequest
     private $requestData;
 
     public function __construct(
-        string $institutionId,
         string $firstName,
         string $lastName,
-        string $emailAddress
+        string $emailAddress,
+        string $institutionId,
+        string $employmentTitle,
+        string $employmentStartDate,
+        string $employmentEndDate
     ) {
-        $this->requestData["affiliation"] = new CanonicalAffiliation($institutionId);
         $this->requestData["name"] = new MemberName($firstName, $lastName);
         $this->requestData["emailAddress"] = new CernEmail($emailAddress);
+        $this->requestData["affiliation"] = LongTermAssociation::fromPrimitives(
+            $institutionId,
+            $employmentTitle,
+            $employmentStartDate,
+            $employmentEndDate
+        );
 
     }
 
-    public function canonicalAffiliation(): CanonicalAffiliation
+    public function affiliation(): LongTermAssociation
     {
         return $this->requestData["affiliation"];
     }
