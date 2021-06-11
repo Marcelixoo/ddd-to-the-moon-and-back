@@ -10,11 +10,10 @@ final class Secretariat extends AuthenticatedUser
 
     public function authenticate($aux_data = null)
     {
-        if ($this->notInEgroup("Atlas.Secretariat")) {
-            $this->isNotCleared();
-            return;
-        }
+        $specification = new SecretariatSpecification();
 
-        $this->isClearedAs(self::ROLE_NAME);
+        if ($specification->isSatisfiedBy($this)) {
+            $this->allowAccess();
+        }
     }
 }

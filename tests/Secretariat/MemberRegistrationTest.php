@@ -40,6 +40,12 @@ final class MemberRegistrationTest extends EmailTestCase
         $this->assertTrue($fromRepository->emailAddress()->isEqualTo(new CernEmail("marcelo.teixeira@cern.ch")));
     }
 
+    /** @test */
+    public function members_have_a_canonical_affiliation(): void
+    {
+        scope
+    }
+
 }
 
 class MembersInMemoryRepository implements MembersRepositoryInterface

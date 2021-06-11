@@ -8,19 +8,12 @@ use Fence\BaseUser;
 
 abstract class AuthenticatedUser extends BaseUser
 {
-    /** @var string[] */
-    private $roles = [];
-
     /** @var bool */
-    private $isNotCleared;
+    private $isNotCleared = true;
 
     public function header_roles(): array
     {
-        if (empty($this->roles)) {
-            return ["Member"];
-        }
-
-        return $this->roles;
+        return Roles::for($this);
     }
 
     public function render_option_tab(): void
@@ -35,6 +28,11 @@ abstract class AuthenticatedUser extends BaseUser
         return ! $this->inEgroup($egroupName);
     }
 
+    public function allowAccess(): void
+    {
+        $this->isNotCleared = false;
+    }
+
     /** @inheritDoc */
     public function is_cleared(): bool
     {
@@ -43,15 +41,5 @@ abstract class AuthenticatedUser extends BaseUser
         }
 
         return parent::is_cleared();
-    }
-
-    protected function isNotCleared(): void
-    {
-        $this->isNotCleared = true;
-    }
-
-    protected function isClearedAs(string ...$roles): void
-    {
-        $this->roles = $roles;
     }
 }

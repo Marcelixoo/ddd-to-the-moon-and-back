@@ -10,6 +10,6 @@ final class Member extends AuthenticatedUser
 
     public function authenticate($aux_data = null)
     {
-        $this->isClearedAs(self::ROLE_NAME);
+        $this->allowAccess();
     }
 }
