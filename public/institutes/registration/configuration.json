@@ -5,12 +5,12 @@
 
         "users": [
             {
-                "id": "AUTH",
-                "class": "\\Atlas\\DDD\\Application\\AuthenticatedUser"
+                "id": "SECRETARIAT",
+                "class": "\\Atlas\\DDD\\Authorization\\Secretariat"
             }
         ],
 
-        "user": "AUTH",
+        "user": "SECRETARIAT",
 
         "DEVELOPERS_EMAIL": "atlas-fence-developers@cern.ch",
 
