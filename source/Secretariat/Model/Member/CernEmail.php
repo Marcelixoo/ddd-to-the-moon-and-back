@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Backoffice\Model;
+namespace Atlas\DDD\Secretariat\Model\Member;
 
 use Webmozart\Assert\Assert;
 

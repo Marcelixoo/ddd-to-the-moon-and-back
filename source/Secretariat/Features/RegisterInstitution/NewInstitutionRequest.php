@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Backoffice\Features\RegisterInstitution;
+namespace Atlas\DDD\Secretariat\Features\RegisterInstitution;
 
 final class NewInstitutionRequest
 {

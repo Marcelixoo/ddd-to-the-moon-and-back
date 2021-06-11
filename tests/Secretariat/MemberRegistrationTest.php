@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Tests\Backoffice;
+namespace Atlas\DDD\Tests\Secretariat;
 
 use RuntimeException;
 use Ramsey\Uuid\Uuid;
-use Atlas\DDD\Backoffice\Features\RegisterMember\MembersRegistrationService;
-use Atlas\DDD\Backoffice\Features\RegisterMember\NewMemberRequest;
-use Atlas\DDD\Backoffice\Model\CernEmail;
-use Atlas\DDD\Backoffice\Model\Member;
-use Atlas\DDD\Backoffice\Model\MembersRepositoryInterface;
+use Atlas\DDD\Secretariat\Features\RegisterMember\MembersRegistrationService;
+use Atlas\DDD\Secretariat\Features\RegisterMember\NewMemberRequest;
+use Atlas\DDD\Secretariat\Model\Member\CernEmail;
+use Atlas\DDD\Secretariat\Model\Member\Member;
+use Atlas\DDD\Secretariat\Model\Member\MembersRepositoryInterface;
 use Atlas\DDD\Tests\Testing\EmailTestCase;
 use Atlas\DDD\Tests\Testing\InMemoryStorage;
 

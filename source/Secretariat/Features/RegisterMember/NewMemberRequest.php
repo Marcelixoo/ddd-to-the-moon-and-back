@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Backoffice\Features\RegisterMember;
+namespace Atlas\DDD\Secretariat\Features\RegisterMember;
 
-use Atlas\DDD\Backoffice\Model\CernEmail;
-use Atlas\DDD\Backoffice\Model\MemberName;
+use Atlas\DDD\Secretariat\Model\Member\CernEmail;
+use Atlas\DDD\Secretariat\Model\Member\MemberName;
 
 final class NewMemberRequest
 {

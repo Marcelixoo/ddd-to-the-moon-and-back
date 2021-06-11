@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Backoffice\Model;
+namespace Atlas\DDD\Secretariat\Model\Institution;
 
 use JsonSerializable;
-use Ramsey\Uuid\Uuid;
 
 final class Institution implements JsonSerializable
 {

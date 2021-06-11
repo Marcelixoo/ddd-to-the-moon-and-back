@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Tests\Backoffice;
+namespace Atlas\DDD\Tests\Secretariat;
 
 use RuntimeException;
 use InvalidArgumentException;
 use League\Period\Datepoint;
 use League\Period\Period;
 use Webmozart\Assert\Assert;
-use Atlas\DDD\Backoffice\Model\CernEmail;
+use Atlas\DDD\Secretariat\Model\CernEmail;
 
 class ActiveMember
 {

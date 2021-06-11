@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Notifications\Notifiers;
+namespace Atlas\DDD\Secretariat\Notifiers;
 
 use Fence\Mailer;
 use Fence\View\View;
 use Atlas\DDD\Application\ProfileLinkGenerator\ProfileLinkGeneratorInterface;
-use Atlas\DDD\Backoffice\Model\Institution;
+use Atlas\DDD\Secretariat\Model\Institution\Institution;
 
 final class InstitutionRegistrationNotifier
 {

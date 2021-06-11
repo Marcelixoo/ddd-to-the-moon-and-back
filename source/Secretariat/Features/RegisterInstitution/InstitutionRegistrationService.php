@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Backoffice\Features\RegisterInstitution;
+namespace Atlas\DDD\Secretariat\Features\RegisterInstitution;
 
-use Atlas\DDD\Backoffice\Model\Institution;
-use Atlas\DDD\Backoffice\Model\InstitutionsRepositoryInterface;
-use Atlas\DDD\Notifications\Notifiers\InstitutionRegistrationNotifier;
+use Atlas\DDD\Secretariat\Model\Institution\Institution;
+use Atlas\DDD\Secretariat\Model\Institution\InstitutionsRepositoryInterface;
+use Atlas\DDD\Secretariat\Notifiers\InstitutionRegistrationNotifier;
 use Ramsey\Uuid\Uuid;
 
 final class InstitutionRegistrationService

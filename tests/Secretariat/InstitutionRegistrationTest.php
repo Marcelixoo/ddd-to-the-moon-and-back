@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Tests\Backoffice;
+namespace Atlas\DDD\Tests\Secretariat;
 
-use Atlas\DDD\Backoffice\Model\Institution;
-use Atlas\DDD\Backoffice\Model\InstitutionNotFoundException;
-use Atlas\DDD\Backoffice\Model\InstitutionsRepositoryInterface;
-use Atlas\DDD\Backoffice\Features\RegisterInstitution\InstitutionRegistrationService;
-use Atlas\DDD\Backoffice\Features\RegisterInstitution\NewInstitutionRequest;
-use Atlas\DDD\Notifications\Notifiers\InstitutionRegistrationNotifier;
+use Atlas\DDD\Secretariat\Model\Institution\Institution;
+use Atlas\DDD\Secretariat\Model\Institution\InstitutionNotFoundException;
+use Atlas\DDD\Secretariat\Model\Institution\InstitutionsRepositoryInterface;
+use Atlas\DDD\Secretariat\Features\RegisterInstitution\InstitutionRegistrationService;
+use Atlas\DDD\Secretariat\Features\RegisterInstitution\NewInstitutionRequest;
+use Atlas\DDD\Secretariat\Notifiers\InstitutionRegistrationNotifier;
 use Atlas\DDD\Tests\Testing\EmailTestCase;
 use Predis\Client;
 

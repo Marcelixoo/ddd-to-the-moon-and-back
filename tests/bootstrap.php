@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Atlas\DDD\Application\ApplicationServiceProvider;
 use Atlas\DDD\Application\ProfileLinkGenerator\ProfileLinkGenerator;
 use Atlas\DDD\Application\ProfileLinkGenerator\ProfileLinkGeneratorInterface;
-use Atlas\DDD\Notifications\Notifiers\InstitutionRegistrationNotifier;
+use Atlas\DDD\Secretariat\Notifiers\InstitutionRegistrationNotifier;
 use Fence\Mailer;
 use Fence\View;
 use Psr\Container\ContainerInterface;

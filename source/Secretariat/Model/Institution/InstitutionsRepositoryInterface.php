@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Backoffice\Model;
+namespace Atlas\DDD\Secretariat\Model\Institution;
 
-use Ramsey\Uuid\Rfc4122\UuidInterface;
-use Atlas\DDD\Backoffice\Model\InstitutionNotFoundException;
+use Atlas\DDD\Secretariat\Model\Institution\InstitutionNotFoundException;
 
 interface InstitutionsRepositoryInterface
 {

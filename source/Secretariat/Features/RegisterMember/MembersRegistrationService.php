@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Backoffice\Features\RegisterMember;
+namespace Atlas\DDD\Secretariat\Features\RegisterMember;
 
-use Atlas\DDD\Backoffice\Model\Member;
-use Atlas\DDD\Backoffice\Model\MembersRepositoryInterface;
+use Atlas\DDD\Secretariat\Model\Member\Member;
+use Atlas\DDD\Secretariat\Model\Member\MembersRepositoryInterface;
 
 final class MembersRegistrationService
 {
