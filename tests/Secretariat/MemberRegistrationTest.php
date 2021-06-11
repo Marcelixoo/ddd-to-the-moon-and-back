@@ -43,7 +43,18 @@ final class MemberRegistrationTest extends EmailTestCase
     /** @test */
     public function members_have_a_canonical_affiliation(): void
     {
-        scope
+        $registrationService = new MembersRegistrationService($repository = new MembersInMemoryRepository());
+
+        $newMemberId = $registrationService->register(new NewMemberRequest(
+            $institutionId = Uuid::uuid4()->toString(),
+            "Marcelo",
+            "Teixeira dos Santos",
+            "marcelo.teixeira@cern.ch"
+        ));
+
+        $fromRepository = $repository->get($newMemberId);
+
+        $this->assertEquals($fromRepository->canonicalAffiliation()->institutionId(), $institutionId);
     }
 
 }

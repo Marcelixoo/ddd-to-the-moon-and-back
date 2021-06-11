@@ -21,9 +21,9 @@ final class MembersRegistrationService
 
         $newMember = new Member(
             $this->membersRepository->nextIdentity(),
-            $request->institutionId(),
             $request->name(),
-            $request->emailAddress()
+            $request->emailAddress(),
+            $request->canonicalAffiliation()
         );
 
         $this->membersRepository->add($newMember);

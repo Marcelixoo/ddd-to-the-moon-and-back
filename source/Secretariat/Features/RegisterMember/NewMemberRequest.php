@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atlas\DDD\Secretariat\Features\RegisterMember;
 
+use Atlas\DDD\Secretariat\Model\Member\AffiliationRegime\CanonicalAffiliation;
 use Atlas\DDD\Secretariat\Model\Member\CernEmail;
 use Atlas\DDD\Secretariat\Model\Member\MemberName;
 
@@ -18,15 +19,15 @@ final class NewMemberRequest
         string $lastName,
         string $emailAddress
     ) {
-        $this->requestData["institutionId"] = $institutionId;
+        $this->requestData["affiliation"] = new CanonicalAffiliation($institutionId);
         $this->requestData["name"] = new MemberName($firstName, $lastName);
         $this->requestData["emailAddress"] = new CernEmail($emailAddress);
 
     }
 
-    public function institutionId(): string
+    public function canonicalAffiliation(): CanonicalAffiliation
     {
-        return $this->requestData["institutionId"];
+        return $this->requestData["affiliation"];
     }
 
     public function name(): MemberName
