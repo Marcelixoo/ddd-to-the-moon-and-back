@@ -6,7 +6,7 @@
         "users": [
             {
                 "id": "AUTH",
-                "class": "\\Atlas\\DDD\\Authentication\\AuthenticatedUser"
+                "class": "\\Atlas\\DDD\\Application\\AuthenticatedUser"
             }
         ],
 

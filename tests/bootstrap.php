@@ -3,10 +3,14 @@
 declare(strict_types=1);
 
 use Atlas\DDD\Application\ApplicationServiceProvider;
-use Atlas\DDD\Notification\Stories\NotifyInstitutionRegistrationByEmail;
+use Atlas\DDD\Application\ProfileLinkGenerator\ProfileLinkGenerator;
+use Atlas\DDD\Application\ProfileLinkGenerator\ProfileLinkGeneratorInterface;
+use Atlas\DDD\Notifications\Notifiers\InstitutionRegistrationNotifier;
 use Fence\Mailer;
 use Fence\View;
 use Psr\Container\ContainerInterface;
+
+use function PHPSTORM_META\map;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,11 +40,8 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $path = dirname(__DIR__);
 
-if (file_exists("{$path}/.env")) {
-    new \Fence\Dotenv($path, ".env");
-}
-
-if (file_exists("{$path}/.env.testing")) {
+$filepath = "{$path}/.env.testing";
+if (file_exists($filepath)) {
     new \Fence\Dotenv($path, ".env.testing");
 }
 
@@ -59,8 +60,12 @@ $containerBuilder = new DI\ContainerBuilder();
 $containerBuilder->addDefinitions(ApplicationServiceProvider::getDefinitions());
 $containerBuilder->addDefinitions([
     'root_path' => dirname(__DIR__),
-    NotifyInstitutionRegistrationByEmail::class => function (ContainerInterface $c) {
-        return new NotifyInstitutionRegistrationByEmail(new Mailer(), $c->get(View::class));
+    InstitutionRegistrationNotifier::class => function (ContainerInterface $c) {
+        return new InstitutionRegistrationNotifier(
+            new Mailer(),
+            $c->get(View::class),
+            $c->get(ProfileLinkGeneratorInterface::class)
+        );
     }
 ]);
 

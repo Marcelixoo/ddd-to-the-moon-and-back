@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Authentication;
+namespace Atlas\DDD\Application;
 
 use Fence\BaseUser;
 

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Membership\Stories\RegisterInstitution;
+namespace Atlas\DDD\Backoffice\Features\RegisterInstitution;
 
-final class RegisterInstitutionRequest
+final class NewInstitutionRequest
 {
     /** @var string */
     public $name;

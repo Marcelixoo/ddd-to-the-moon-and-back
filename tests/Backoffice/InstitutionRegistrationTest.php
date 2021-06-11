@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Tests\Membership;
+namespace Atlas\DDD\Tests\Backoffice;
 
-use Atlas\DDD\Membership\Model\Institution;
-use Atlas\DDD\Membership\Model\InstitutionNotFoundException;
-use Atlas\DDD\Membership\Model\InstitutionsRepositoryInterface;
-use Atlas\DDD\Membership\Stories\RegisterInstitution\RegisterInstitutionCommand;
-use Atlas\DDD\Membership\Stories\RegisterInstitution\RegisterInstitutionRequest;
-use Atlas\DDD\Notification\Stories\NotifyInstitutionRegistrationByEmail;
+use Atlas\DDD\Backoffice\Model\Institution;
+use Atlas\DDD\Backoffice\Model\InstitutionNotFoundException;
+use Atlas\DDD\Backoffice\Model\InstitutionsRepositoryInterface;
+use Atlas\DDD\Backoffice\Features\RegisterInstitution\InstitutionRegistrationService;
+use Atlas\DDD\Backoffice\Features\RegisterInstitution\NewInstitutionRequest;
+use Atlas\DDD\Notifications\Notifiers\InstitutionRegistrationNotifier;
 use Atlas\DDD\Tests\Testing\EmailTestCase;
 use Predis\Client;
 
@@ -24,9 +24,9 @@ final class InstitutionRegistrationTest extends EmailTestCase
     /** @test */
     public function it_saves_a_new_institution_and_returns_its_id(): void
     {
-        $command = new RegisterInstitutionCommand($institutionsRepository = new InstitutionsRedisRepository(), $this->container->get(NotifyInstitutionRegistrationByEmail::class));
+        $command = new InstitutionRegistrationService($institutionsRepository = new InstitutionsRedisRepository(), $this->container->get(InstitutionRegistrationNotifier::class));
 
-        $newId = $command->execute(new RegisterInstitutionRequest(
+        $newId = $command->execute(new NewInstitutionRequest(
             "Universidade Federal do Rio de Janeiro",
             "Brazil"
         ));
@@ -39,9 +39,9 @@ final class InstitutionRegistrationTest extends EmailTestCase
     /** @test */
     public function it_sends_an_email_notifying_the_registration_to_atlas_secretariat(): void
     {
-        $command = new RegisterInstitutionCommand(new InstitutionsRedisRepository(), $this->container->get(NotifyInstitutionRegistrationByEmail::class));
+        $command = new InstitutionRegistrationService(new InstitutionsRedisRepository(), $this->container->get(InstitutionRegistrationNotifier::class));
 
-        $command->execute(new RegisterInstitutionRequest(
+        $institutionId = $command->execute(new NewInstitutionRequest(
             "Universidade Federal do Rio de Janeiro",
             "Brazil"
         ));
@@ -50,6 +50,7 @@ final class InstitutionRegistrationTest extends EmailTestCase
 
         $this->assertEmailSubjectContains('Institution registration', $lastMessage);
         $this->assertEmailHtmlContains('Universidade Federal do Rio de Janeiro', $lastMessage);
+        $this->assertEmailHtmlContains("http://localhost:8000/institutions/{$institutionId}", $lastMessage);
     }
 
 }

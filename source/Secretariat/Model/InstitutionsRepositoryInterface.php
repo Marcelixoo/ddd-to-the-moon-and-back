@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Membership\Model;
+namespace Atlas\DDD\Backoffice\Model;
 
 use Ramsey\Uuid\Rfc4122\UuidInterface;
-use Atlas\DDD\Membership\Model\InstitutionNotFoundException;
+use Atlas\DDD\Backoffice\Model\InstitutionNotFoundException;
 
 interface InstitutionsRepositoryInterface
 {

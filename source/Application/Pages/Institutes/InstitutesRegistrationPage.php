@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Application\UserInterface;
+namespace Atlas\DDD\Application\Pages\Institutes;
 
 use Fence\Content;
-use Fence\Logger;
 use Fence\View\View;
 
-final class IndexPage extends Content
+final class InstitutesRegistrationPage extends Content
 {
     /** @var View */
     private $templateEngine;
@@ -38,6 +37,6 @@ final class IndexPage extends Content
 
     public function render()
     {
-        echo $this->templateEngine->render('base.html.twig');
+        echo $this->templateEngine->render('institutes/registration.html.twig');
     }
 }

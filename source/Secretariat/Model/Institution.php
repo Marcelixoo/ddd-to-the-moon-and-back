@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Membership\Model;
+namespace Atlas\DDD\Backoffice\Model;
 
 use JsonSerializable;
 use Ramsey\Uuid\Uuid;

@@ -2,35 +2,35 @@
 
 declare(strict_types=1);
 
-namespace Atlas\DDD\Membership\Stories\RegisterInstitution;
+namespace Atlas\DDD\Backoffice\Features\RegisterInstitution;
 
-use Atlas\DDD\Membership\Model\Institution;
-use Atlas\DDD\Membership\Model\InstitutionsRepositoryInterface;
-use Atlas\DDD\Notification\Stories\NotifyInstitutionRegistrationByEmail;
+use Atlas\DDD\Backoffice\Model\Institution;
+use Atlas\DDD\Backoffice\Model\InstitutionsRepositoryInterface;
+use Atlas\DDD\Notifications\Notifiers\InstitutionRegistrationNotifier;
 use Ramsey\Uuid\Uuid;
 
-final class RegisterInstitutionCommand
+final class InstitutionRegistrationService
 {
     /** @var InstitutionsRepositoryInterface */
     private $institutionsRepository;
 
-    /** @var NotifyInstitutionRegistrationByEmail */
+    /** @var InstitutionRegistrationNotifier */
     private $registrationNotifier;
 
     public function __construct(
         InstitutionsRepositoryInterface $institutionsRepository,
-        NotifyInstitutionRegistrationByEmail $registrationNotifier
+        InstitutionRegistrationNotifier $registrationNotifier
     ) {
         $this->institutionsRepository = $institutionsRepository;
         $this->registrationNotifier = $registrationNotifier;
     }
 
-    public function execute(RegisterInstitutionRequest $request): string
+    public function execute(NewInstitutionRequest $request): string
     {
         $newInstitution = new Institution(Uuid::uuid4()->toString(), $request->name, $request->country);
 
         $this->institutionsRepository->save($newInstitution);
-        $this->registrationNotifier->fire($newInstitution);
+        $this->registrationNotifier->notify($newInstitution);
 
         return $newInstitution->id();
     }

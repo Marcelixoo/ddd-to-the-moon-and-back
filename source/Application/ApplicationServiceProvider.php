@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Atlas\DDD\Application;
 
-use Psr\Container\ContainerInterface;
 use Fence\View;
 use Fence\SessionManager;
-use Atlas\DDD\Application\UserInterface\IndexPage;
-use Atlas\DDD\Application\UserInterface\Institutes\InstitutesRegistrationPage;
+use Psr\Container\ContainerInterface;
+use Atlas\DDD\Application\ProfileLinkGenerator\ProfileLinkGenerator;
+use Atlas\DDD\Application\ProfileLinkGenerator\ProfileLinkGeneratorInterface;
+use Atlas\DDD\Application\Pages\IndexPage;
+use Atlas\DDD\Application\Pages\Institutes\InstitutesRegistrationPage;
 
 final class ApplicationServiceProvider
 {
@@ -26,6 +28,8 @@ final class ApplicationServiceProvider
                 return $c->get('root_path') . '/resources/views';
             },
 
+            'uri' => getenv("REQUEST_URI"),
+
             View::class => function (ContainerInterface $c) {
                 return new View($c->get('templates'));
             },
@@ -35,6 +39,9 @@ final class ApplicationServiceProvider
             },
             InstitutesRegistrationPage::class => function (ContainerInterface $c) {
                 return new InstitutesRegistrationPage($c->get('views') . '/login.json', $c->get(View::class));
+            },
+            ProfileLinkGeneratorInterface::class => function (ContainerInterface $c) {
+                return new ProfileLinkGenerator($c->get('uri'));
             }
         ];
     }

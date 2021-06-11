@@ -9,7 +9,7 @@ ini_set('sendmail_path', '/usr/bin/env catchmail -f fence-developers@cern.ch');
 $container = require_once __DIR__ . '/../../../bootstrap/bootstrap.php';
 $fence = require_once __DIR__ . '/../../../bootstrap/fence.php';
 
-use Atlas\DDD\Application\UserInterface\Institutes\InstitutesRegistrationPage;
+use Atlas\DDD\Application\Pages\Institutes\InstitutesRegistrationPage;
 use Fence\Fence;
 use Fence\Mailer;
 
